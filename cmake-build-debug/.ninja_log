@@ -1,0 +1,8 @@
+# ninja log v5
+6	476	7229877626533183	CMakeFiles/PEA2.dir/FileReader.cpp.obj	88b54bf2ad558cf6
+13	490	7229877626708895	CMakeFiles/PEA2.dir/Menu.cpp.obj	b31fcf5df52ef040
+24	498	7229877626768791	CMakeFiles/PEA2.dir/Matrix.cpp.obj	526531b430edc163
+1	1700	7229877638822014	CMakeFiles/PEA2.dir/main.cpp.obj	ba673ae94e9889ec
+19	1756	7229877639380530	CMakeFiles/PEA2.dir/Timer.cpp.obj	9f6438af106919db
+3	436	7229877860494755	CMakeFiles/PEA2.dir/Menu.cpp.obj	b31fcf5df52ef040
+437	533	7229877861429865	PEA2.exe	2e185fbcf7fb4695
