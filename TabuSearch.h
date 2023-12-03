@@ -9,19 +9,22 @@
 #include <list>
 #include <vector>
 #include "Matrix.h"
+#include "Timer.h"
 
 class TabuSearch {
 public:
-    TabuSearch(Matrix* matrix);
+    TabuSearch(Matrix* matrix, int stopCriteria);
     //attribute - 
     //cadence - how long element is stored on tabuList
     std::list<std::pair<int,int>> tabuList; //attribute + cadence
     std::vector<int> solution;
-    int bestSolution;
-    void launch();
-    std::vector<std::pair<bool, int>> generateBegSolution();
+    int objectiveFunction;
+    void launch(Timer timer);
+    void generateBegSolution();
+    int calculateRoute();
+    void printSolution();
     Matrix* matrix;
-
+    int stopCriteria;
 
 };
 

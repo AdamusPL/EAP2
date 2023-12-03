@@ -8,6 +8,7 @@
 
 Menu::Menu(){
     matrix = nullptr;
+    stopCriteria = 0;
 }
 
 void Menu::option1() {
@@ -21,7 +22,8 @@ void Menu::option1() {
 }
 
 void Menu::option2() {
-
+    std::cout<<"Give the stop criteria (in seconds):"<<std::endl;
+    std::cin>>stopCriteria;
 }
 
 void Menu::option3() {
@@ -35,6 +37,12 @@ void Menu::option4(){
         return;
     }
 
-    TabuSearch tabuSearch = TabuSearch(matrix);
-    tabuSearch.launch();
+    if(stopCriteria == 0){
+        std::cout<<"Stop criteria hasn't been set yet"<<std::endl;
+        return;
+    }
+
+    TabuSearch tabuSearch = TabuSearch(matrix, stopCriteria);
+    timer.startTimer();
+    tabuSearch.launch(timer);
 }

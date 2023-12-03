@@ -7,6 +7,7 @@
 
 
 #include "Matrix.h"
+#include "Timer.h"
 
 class Menu {
 public:
@@ -22,6 +23,8 @@ public:
     void option8();
 
     Matrix* matrix;
+    int stopCriteria;
+    Timer timer;
 };
 
 
