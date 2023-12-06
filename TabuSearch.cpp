@@ -16,7 +16,7 @@ TabuSearch::TabuSearch(Matrix* matrix, int stopCriteria){
 void TabuSearch::launch(Timer timer){
 
     //1. Choose beginning solution x_0
-    generateBegSolution();
+    generateBegSolutionGreedy();
 
     //2. Neighbourhood
     int x;
@@ -86,8 +86,9 @@ int TabuSearch::calculateRoute(){
     return objectiveFunction;
 }
 
+//has to be greedy
 //method to generate beginning solution
-void TabuSearch::generateBegSolution(){
+void TabuSearch::generateBegSolutionRandom(){
 
     std::vector<bool> visited; //vector helping to generate permutation
 
@@ -112,6 +113,45 @@ void TabuSearch::generateBegSolution(){
             objectiveFunction+=matrix->adjMatrix[solution[i-1]][solution[i]]; //calculate objective function
         }
 
+    }
+
+    objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
+
+    printSolution();
+
+}
+
+void TabuSearch::generateBegSolutionGreedy(){
+
+    std::vector<bool> visited; //vector helping to generate permutation
+
+    for (int i = 0; i < matrix->nrV; ++i) { //filling the vector
+        visited.push_back(false);
+    }
+
+    solution.push_back(0);
+    visited[0] = true;
+
+    srand(time(NULL)); //initialize the seed
+    int min;
+    int node;
+
+    for (int i = 1; i < matrix->nrV; ++i) {
+
+        min = INT_MAX;
+
+        for (int j = 1; j < matrix->nrV; ++j) {
+
+            if(matrix->adjMatrix[solution[i-1]][j] < min && !visited[j]){
+                min = matrix->adjMatrix[solution[i-1]][j];
+                node = j;
+            }
+
+        }
+
+        solution.push_back(node);
+        visited[node] = true;
+        objectiveFunction += min;
     }
 
     objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node

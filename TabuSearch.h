@@ -20,7 +20,8 @@ public:
     std::vector<int> solution;
     int objectiveFunction;
     void launch(Timer timer);
-    void generateBegSolution();
+    void generateBegSolutionRandom();
+    void generateBegSolutionGreedy();
     int calculateRoute();
     void printSolution();
     Matrix* matrix;
