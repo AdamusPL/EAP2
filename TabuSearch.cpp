@@ -28,13 +28,8 @@ void TabuSearch::launch(Timer timer){
     // <newObjectiveFunctionValue, <indexOfSwappedNode1, indexOfSwappedNode2>>
     std::priority_queue<std::pair<int, std::pair<int,int>>> priorityQueue;
 
-    while(true) { //it never ends, only stop criteria can stop it
+    while(timer.stopTimer() / 1000000.0 < stopCriteria) { //until it reaches stopCriteria (specified time in seconds)
         for (int i = 0; i < matrix->nrV; ++i) {
-
-            if (timer.stopTimer() / 1000000.0 >= stopCriteria) {
-                std::cout << "STOP!" << std::endl;
-                return;
-            }
 
             x = rand() % (matrix->nrV); //get random number
 
@@ -71,6 +66,8 @@ void TabuSearch::launch(Timer timer){
         }
 
     }
+
+    std::cout << "STOP! " << stopCriteria << " seconds passed" << std::endl;
 
 }
 

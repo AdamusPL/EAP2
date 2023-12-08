@@ -5,6 +5,7 @@
 #include "Menu.h"
 #include "FileReader.h"
 #include "TabuSearch.h"
+#include "SimulatedAnnealing.h"
 
 Menu::Menu(){
     matrix = nullptr;
@@ -45,4 +46,38 @@ void Menu::option4(){
     TabuSearch tabuSearch = TabuSearch(matrix, stopCriteria);
     timer.startTimer();
     tabuSearch.launch(timer);
+}
+
+void Menu::option5(){
+    std::cout<<"Give the temperature coefficient change (0,1):"<<std::endl;
+    std::cin >> a;
+}
+
+void Menu::option6() {
+    if(matrix == nullptr){
+        std::cout<<"No data hasn't been read yet"<<std::endl;
+        return;
+    }
+
+    if(stopCriteria == 0){
+        std::cout<<"Stop criteria hasn't been set yet"<<std::endl;
+        return;
+    }
+
+    if(a == 0){
+        std::cout<<"Temperature coefficient hasn't been set yet"<<std::endl;
+        return;
+    }
+
+    SimulatedAnnealing simulatedAnnealing = SimulatedAnnealing(matrix, a, stopCriteria);
+    timer.startTimer();
+    simulatedAnnealing.launch(timer);
+}
+
+void Menu::option7() {
+
+}
+
+void Menu::option8() {
+
 }

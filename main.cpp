@@ -38,6 +38,23 @@ int main() {
 
             case 4:
                 menu.option4();
+                break;
+
+            case 5:
+                menu.option5();
+                break;
+
+            case 6:
+                menu.option6();
+                break;
+
+            case 7:
+                menu.option7();
+                break;
+
+            case 8:
+                menu.option8();
+                break;
 
         }
 

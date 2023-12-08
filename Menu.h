@@ -24,6 +24,7 @@ public:
 
     Matrix* matrix;
     int stopCriteria;
+    double a;
     Timer timer;
 };
 

@@ -85,6 +85,12 @@ build CMakeFiles/PEA2.dir/TabuSearch.cpp.obj: CXX_COMPILER__PEA2_Debug C$:/Studi
   OBJECT_DIR = CMakeFiles\PEA2.dir
   OBJECT_FILE_DIR = CMakeFiles\PEA2.dir
 
+build CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj: CXX_COMPILER__PEA2_Debug C$:/Studia/5sem/PEA2/SimulatedAnnealing.cpp || cmake_object_order_depends_target_PEA2
+  DEP_FILE = CMakeFiles\PEA2.dir\SimulatedAnnealing.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\PEA2.dir
+  OBJECT_FILE_DIR = CMakeFiles\PEA2.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target PEA2
@@ -93,7 +99,7 @@ build CMakeFiles/PEA2.dir/TabuSearch.cpp.obj: CXX_COMPILER__PEA2_Debug C$:/Studi
 #############################################
 # Link the executable PEA2.exe
 
-build PEA2.exe: CXX_EXECUTABLE_LINKER__PEA2_Debug CMakeFiles/PEA2.dir/main.cpp.obj CMakeFiles/PEA2.dir/Menu.cpp.obj CMakeFiles/PEA2.dir/FileReader.cpp.obj CMakeFiles/PEA2.dir/Matrix.cpp.obj CMakeFiles/PEA2.dir/Timer.cpp.obj CMakeFiles/PEA2.dir/TabuSearch.cpp.obj
+build PEA2.exe: CXX_EXECUTABLE_LINKER__PEA2_Debug CMakeFiles/PEA2.dir/main.cpp.obj CMakeFiles/PEA2.dir/Menu.cpp.obj CMakeFiles/PEA2.dir/FileReader.cpp.obj CMakeFiles/PEA2.dir/Matrix.cpp.obj CMakeFiles/PEA2.dir/Timer.cpp.obj CMakeFiles/PEA2.dir/TabuSearch.cpp.obj CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\PEA2.dir
