@@ -54,11 +54,11 @@ void TabuSearch::launch(Timer timer){
             //update solution and objective function with new best solution
             std::swap(solution[bestSolution.second.first], solution[bestSolution.second.second]);
             objectiveFunction = bestSolution.first;
-            numberOfSwaps++;
+//            numberOfSwaps++;
 
-            printSolution();
-            std::cout<<"Swap: "<<solution[bestSolution.second.first]<<" z "<<solution[bestSolution.second.second] <<std::endl;
-            std::cout<<"Wykonano swapow: "<<numberOfSwaps<<std::endl;
+//            printSolution();
+//            std::cout<<"Swap: "<<solution[bestSolution.second.first]<<" z "<<solution[bestSolution.second.second] <<std::endl;
+//            std::cout<<"Wykonano swapow: "<<numberOfSwaps<<std::endl;
 
             while(!priorityQueue.empty()){
                 priorityQueue.pop(); //empty the queue
@@ -67,6 +67,7 @@ void TabuSearch::launch(Timer timer){
 
     }
 
+    std::cout << "Score: " << objectiveFunction << std::endl;
     std::cout << "STOP! " << stopCriteria << " seconds passed" << std::endl;
 
 }
@@ -114,7 +115,7 @@ void TabuSearch::generateBegSolutionRandom(){
 
     objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
 
-    printSolution();
+//    printSolution();
 
 }
 
@@ -153,7 +154,7 @@ void TabuSearch::generateBegSolutionGreedy(){
 
     objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
 
-    printSolution();
+//    printSolution();
 
 }
 

@@ -10,6 +10,7 @@
 Menu::Menu(){
     matrix = nullptr;
     stopCriteria = 0;
+    a = 0;
 }
 
 void Menu::option1() {

@@ -21,7 +21,7 @@ void SimulatedAnnealing::launch(Timer timer) {
 
     while(timer.stopTimer() / 1000000.0 < stopCriteria){
 
-        while(true) { //2. reached number of eras
+        while(timer.stopTimer() / 1000000.0 < stopCriteria) { //2. reached number of eras
             //3. new y state in neighbourhood x
             i = rand() % (matrix->nrV);
             x = rand() % (matrix->nrV); //get random number
@@ -37,13 +37,13 @@ void SimulatedAnnealing::launch(Timer timer) {
 
             if (delta <= 0) { //we update objectiveFunction
                 objectiveFunction = newObjectiveFunction;
-                printSolution();
+//                printSolution();
             }
 
             //probability of tolerance of accepting worse solution
             else if(exp(-delta/T_k) >= static_cast<double>(rand()%100+1) / 100.0){ //if e^(-delta/T) >= random[0,1]
                 objectiveFunction = newObjectiveFunction;
-                printSolution();
+//                printSolution();
             }
 
             else{ //we come back to previous solution
@@ -56,6 +56,7 @@ void SimulatedAnnealing::launch(Timer timer) {
         }
     }
 
+    std::cout << "Cost: " << objectiveFunction << std::endl;
     std::cout << "STOP! " << stopCriteria << " seconds passed" << std::endl;
 
 }
@@ -107,7 +108,7 @@ void SimulatedAnnealing::generateBegSolutionGreedy(){
 
     objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
 
-    printSolution();
+//    printSolution();
 
 }
 
