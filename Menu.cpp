@@ -57,6 +57,15 @@ void Menu::option4(){
 void Menu::option5(){
     std::cout<<"Give the temperature coefficient change (0,1):"<<std::endl;
     std::cin >> a;
+
+    coolingOption = 0;
+    std::cout << "1. Geometric cooling" <<std::endl;
+    std::cout << "2. Exponential cooling" <<std::endl;
+    std::cout << "3. Logaritmic cooling" <<std::endl;
+
+    while(coolingOption!=1 && coolingOption!=2 && coolingOption!=3) {
+        std::cin >> coolingOption;
+    }
 }
 
 void Menu::option6() {
@@ -75,7 +84,7 @@ void Menu::option6() {
         return;
     }
 
-    SimulatedAnnealing simulatedAnnealing = SimulatedAnnealing(matrix, a, stopCriteria);
+    SimulatedAnnealing simulatedAnnealing = SimulatedAnnealing(matrix, a, stopCriteria, coolingOption);
     timer.startTimer();
     simulatedAnnealing.launch(timer);
 
@@ -91,8 +100,12 @@ void Menu::option7() {
         return;
     }
 
+    std::string filename;
+    std::cout << "Give the name of file:" <<std::endl;
+    std::cin >> filename;
+
     std::fstream file;
-    file.open("solution.txt", std::ios::out);
+    file.open(filename, std::ios::out);
 
     file << matrix->nrV << std::endl; //number of nodes
 
@@ -112,8 +125,12 @@ void Menu::option8() {
         return;
     }
 
+    std::string filename;
+    std::cout << "Give the name of file:" <<std::endl;
+    std::cin >> filename;
+
     std::fstream file;
-    file.open("solution.txt", std::ios::in);
+    file.open(filename, std::ios::in);
 
     //read data from file
     int numberOfNodes;

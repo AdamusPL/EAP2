@@ -13,11 +13,12 @@
 
 class SimulatedAnnealing {
 public:
-    SimulatedAnnealing(Matrix*, double, int);
+    SimulatedAnnealing(Matrix*, double, int, int);
     Matrix* matrix;
     std::vector<int> solution;
     int objectiveFunction;
     int stopCriteria;
+    int coolingOption;
     double a;
     double T_k;
     void launch(Timer timer);

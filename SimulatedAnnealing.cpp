@@ -4,7 +4,7 @@
 
 #include "SimulatedAnnealing.h"
 
-SimulatedAnnealing::SimulatedAnnealing(Matrix *matrix, double a, int stopCriteria) {
+SimulatedAnnealing::SimulatedAnnealing(Matrix *matrix, double a, int stopCriteria, int coolingOption) {
     this->matrix=matrix;
     this->a = a;
     this->stopCriteria = stopCriteria;
@@ -23,7 +23,7 @@ void SimulatedAnnealing::launch(Timer timer) {
 
     while(timer.stopTimer() / 1000000.0 < stopCriteria){ //1. while stop criteria
 
-        for(int j=0; j<matrix->nrV*matrix->nrV/2; j++){ //2. reached number of eras, L=n^2/2
+        for(int k=0; k<matrix->nrV*matrix->nrV/2; k++){ //2. reached number of eras, L=n^2/2
             //3. new y state in neighbourhood x
             i = rand() % (matrix->nrV);
             x = rand() % (matrix->nrV); //get random number
@@ -53,7 +53,17 @@ void SimulatedAnnealing::launch(Timer timer) {
             }
 
             //7. Decrease temperature
-            T_k = a * T_k;
+            if(coolingOption == 1) { //geometric
+                T_k = a * T_k;
+            }
+
+            else if(coolingOption == 2){ //exponential
+                T_k = pow(a,k)*T_k;
+            }
+
+            else{ //logarithmic
+                T_k = T_k/(1+log(1+k));
+            }
 
         }
     }

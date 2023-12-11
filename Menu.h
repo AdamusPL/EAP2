@@ -30,6 +30,7 @@ public:
     Matrix* matrix;
     int stopCriteria;
     double a;
+    int coolingOption;
     Timer timer;
 };
 
