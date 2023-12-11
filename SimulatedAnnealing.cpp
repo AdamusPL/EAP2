@@ -18,7 +18,8 @@ void SimulatedAnnealing::launch(Timer timer) {
     int x, i;
     int newObjectiveFunction;
     int delta;
-    T_k = generateSolutionGreedyTheWorst() - objectiveFunction; //beginning temperature
+
+    T_k = findMax() - findMin();
 
     while(timer.stopTimer() / 1000000.0 < stopCriteria){ //1. while stop criteria
 
@@ -58,6 +59,63 @@ void SimulatedAnnealing::launch(Timer timer) {
     }
 
     std::cout << "STOP! " << stopCriteria << " seconds passed" << std::endl;
+
+}
+
+int SimulatedAnnealing::findMin(){
+    int min = INT_MAX;
+    for (int i = 0; i < matrix->nrV; ++i) {
+        for (int j = 0; j < matrix->nrV; ++j) {
+            if(matrix->adjMatrix[i][j] < min && i!=j){
+                min = matrix->adjMatrix[i][j];
+            }
+        }
+    }
+    return min;
+}
+
+int SimulatedAnnealing::findMax(){
+    int max = 0;
+    for (int i = 0; i < matrix->nrV; ++i) {
+        for (int j = 0; j < matrix->nrV; ++j) {
+            if(matrix->adjMatrix[i][j] > max && i!=j){
+                max = matrix->adjMatrix[i][j];
+            }
+        }
+    }
+    return max;
+}
+
+void SimulatedAnnealing::generateBegSolutionRandom(){
+
+    std::vector<bool> visited; //vector helping to generate permutation
+
+    for (int i = 0; i < matrix->nrV; ++i) { //filling the vector
+        visited.push_back(false);
+    }
+
+    srand(time(NULL)); //initialize the seed
+    int x;
+
+    for (int i = 0; i < matrix->nrV; ++i) {
+        x = rand()%(matrix->nrV); //get random number
+
+        while(visited[x]){ //if it exists in solution, generate once again
+            x = rand()%(matrix->nrV);
+        }
+
+        solution.push_back(x);
+        visited[x] = true; //we visit every node once
+
+        if(i>0){
+            objectiveFunction+=matrix->adjMatrix[solution[i-1]][solution[i]]; //calculate objective function
+        }
+
+    }
+
+    objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
+
+//    printSolution();
 
 }
 
@@ -125,7 +183,6 @@ int SimulatedAnnealing::generateSolutionGreedyTheWorst() {
     solution.push_back(0);
     visited[0] = true;
 
-    srand(time(NULL)); //initialize the seed
     int max;
     int node;
 

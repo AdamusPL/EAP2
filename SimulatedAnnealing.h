@@ -27,6 +27,12 @@ public:
     int generateSolutionGreedyTheWorst();
     void printSolution();
 
+    void generateBegSolutionRandom();
+    int bestRandom;
+    std::vector<int> bestRandomSolution;
+    int findMin();
+    int findMax();
+
 };
 
 
