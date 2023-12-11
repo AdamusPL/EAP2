@@ -14,14 +14,15 @@ void SimulatedAnnealing::launch(Timer timer) {
 
     //1. random beginning solution
     generateBegSolutionGreedy();
+    printSolution();
     int x, i;
     int newObjectiveFunction;
     int delta;
-    T_k = 1; //beginning temperature equals 1 (it's maximum)
+    T_k = generateSolutionGreedyTheWorst() - objectiveFunction; //beginning temperature
 
-    while(timer.stopTimer() / 1000000.0 < stopCriteria){
+    while(timer.stopTimer() / 1000000.0 < stopCriteria){ //1. while stop criteria
 
-        while(timer.stopTimer() / 1000000.0 < stopCriteria) { //2. reached number of eras
+        for(int j=0; j<matrix->nrV*matrix->nrV/2; j++){ //2. reached number of eras, L=n^2/2
             //3. new y state in neighbourhood x
             i = rand() % (matrix->nrV);
             x = rand() % (matrix->nrV); //get random number
@@ -33,14 +34,14 @@ void SimulatedAnnealing::launch(Timer timer) {
             std::swap(solution[i], solution[x]);
             newObjectiveFunction = calculateRoute();
 
-            delta = newObjectiveFunction - objectiveFunction; //delta = f(x)-f(y)
+            delta = newObjectiveFunction - objectiveFunction; //4. delta = f(x)-f(y)
 
-            if (delta <= 0) { //we update objectiveFunction
+            if (delta <= 0) { //5. we update objectiveFunction
                 objectiveFunction = newObjectiveFunction;
 //                printSolution();
             }
 
-            //probability of tolerance of accepting worse solution
+            //6. probability of tolerance of accepting worse solution
             else if(exp(-delta/T_k) >= static_cast<double>(rand()%100+1) / 100.0){ //if e^(-delta/T) >= random[0,1]
                 objectiveFunction = newObjectiveFunction;
 //                printSolution();
@@ -50,13 +51,12 @@ void SimulatedAnnealing::launch(Timer timer) {
                 std::swap(solution[i], solution[x]);
             }
 
-            //4. Decrease temperature
+            //7. Decrease temperature
             T_k = a * T_k;
 
         }
     }
 
-    std::cout << "Cost: " << objectiveFunction << std::endl;
     std::cout << "STOP! " << stopCriteria << " seconds passed" << std::endl;
 
 }
@@ -110,6 +110,47 @@ void SimulatedAnnealing::generateBegSolutionGreedy(){
 
 //    printSolution();
 
+}
+
+int SimulatedAnnealing::generateSolutionGreedyTheWorst() {
+    int objectiveFunction;
+    std::vector<int> solution;
+
+    std::vector<bool> visited; //vector helping to generate permutation
+
+    for (int i = 0; i < matrix->nrV; ++i) { //filling the vector
+        visited.push_back(false);
+    }
+
+    solution.push_back(0);
+    visited[0] = true;
+
+    srand(time(NULL)); //initialize the seed
+    int max;
+    int node;
+
+    for (int i = 1; i < matrix->nrV; ++i) {
+
+        max = 0;
+
+        for (int j = 1; j < matrix->nrV; ++j) {
+
+            if(matrix->adjMatrix[solution[i-1]][j] > max && !visited[j]){
+                max = matrix->adjMatrix[solution[i - 1]][j];
+                node = j;
+            }
+
+        }
+
+        solution.push_back(node);
+        visited[node] = true;
+        objectiveFunction += max;
+    }
+
+    objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
+    return objectiveFunction;
+
+//    printSolution();
 }
 
 void SimulatedAnnealing::printSolution(){

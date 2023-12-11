@@ -24,6 +24,7 @@ public:
 
     int calculateRoute();
     void generateBegSolutionGreedy();
+    int generateSolutionGreedyTheWorst();
     void printSolution();
 
 };

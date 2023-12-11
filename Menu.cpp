@@ -11,6 +11,7 @@ Menu::Menu(){
     matrix = nullptr;
     stopCriteria = 0;
     a = 0;
+    objectiveFunction = 0;
 }
 
 void Menu::option1() {
@@ -47,6 +48,10 @@ void Menu::option4(){
     TabuSearch tabuSearch = TabuSearch(matrix, stopCriteria);
     timer.startTimer();
     tabuSearch.launch(timer);
+
+    solution = tabuSearch.solution;
+    objectiveFunction = tabuSearch.objectiveFunction;
+    printSolution();
 }
 
 void Menu::option5(){
@@ -73,12 +78,72 @@ void Menu::option6() {
     SimulatedAnnealing simulatedAnnealing = SimulatedAnnealing(matrix, a, stopCriteria);
     timer.startTimer();
     simulatedAnnealing.launch(timer);
+
+    solution = simulatedAnnealing.solution;
+    objectiveFunction = simulatedAnnealing.objectiveFunction;
+    printSolution();
 }
 
 void Menu::option7() {
+
+    if(solution.empty() || objectiveFunction == 0){
+        std::cout << "None of the algorithms has been run yet" << std::endl;
+        return;
+    }
+
+    std::fstream file;
+    file.open("solution.txt", std::ios::out);
+
+    file << matrix->nrV << std::endl; //number of nodes
+
+    for(int i=0; i<solution.size(); i++){
+        file << solution[i] << std::endl; //path
+    }
+
+    file << solution[0] << std::endl; //cycle
+    file.close();
 
 }
 
 void Menu::option8() {
 
+    if(matrix == nullptr){
+        std::cout<<"Matrix hasn't been read yet"<<std::endl;
+        return;
+    }
+
+    std::fstream file;
+    file.open("solution.txt", std::ios::in);
+
+    //read data from file
+    int numberOfNodes;
+    int data;
+    file >> numberOfNodes;
+
+    for(int i=0; i < numberOfNodes - 1; i++){
+        file >> data;
+        solution.push_back(data);
+    }
+
+    file.close();
+
+    //calculate route
+    for(int i=1; i < matrix->nrV; i++){
+        objectiveFunction += matrix->adjMatrix[solution[i-1]][solution[i]];
+    }
+
+    objectiveFunction += matrix->adjMatrix[solution[solution.size()-1]][solution[0]];
+
+    Menu::printSolution();
+
+}
+
+void Menu::printSolution(){
+    for (int i = 0; i < solution.size(); ++i) {
+        std::cout << solution[i] << "->";
+    }
+
+    std::cout << solution[0];
+    std::cout<<std::endl;
+    std::cout<<objectiveFunction<<std::endl;
 }

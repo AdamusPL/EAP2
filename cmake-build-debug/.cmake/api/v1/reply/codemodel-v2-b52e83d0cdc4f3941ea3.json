@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Studia/5sem/PEA2/cmake-build-debug",
-		"source" : "C:/Studia/5sem/PEA2"
+		"build" : "C:/Users/adamc/CLionProjects/EAP2/cmake-build-debug",
+		"source" : "C:/Users/adamc/CLionProjects/EAP2"
 	},
 	"version" : 
 	{

@@ -8,6 +8,8 @@
 
 #include "Matrix.h"
 #include "Timer.h"
+#include <fstream>
+#include <vector>
 
 class Menu {
 public:
@@ -21,7 +23,10 @@ public:
     void option6();
     void option7();
     void option8();
+    void printSolution();
 
+    std::vector<int> solution;
+    int objectiveFunction;
     Matrix* matrix;
     int stopCriteria;
     double a;
