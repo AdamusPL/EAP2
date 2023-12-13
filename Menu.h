@@ -8,6 +8,7 @@
 
 #include "Matrix.h"
 #include "Timer.h"
+#include "FileReader.h"
 #include <fstream>
 #include <vector>
 
@@ -24,14 +25,16 @@ public:
     void option7();
     void option8();
     void printSolution();
+    void manualTests();
+    void automaticTests();
 
     std::vector<int> solution;
     int objectiveFunction;
     Matrix* matrix;
     int stopCriteria;
     double a;
-    int coolingOption;
     Timer timer;
+    FileReader fileReader;
 };
 
 

@@ -11,6 +11,7 @@
 class FileReader {
 public:
     Matrix* read();
+    std::string filename;
 };
 
 

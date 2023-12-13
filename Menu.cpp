@@ -6,6 +6,7 @@
 #include "FileReader.h"
 #include "TabuSearch.h"
 #include "SimulatedAnnealing.h"
+#include "FileWriter.h"
 
 Menu::Menu(){
     matrix = nullptr;
@@ -15,7 +16,6 @@ Menu::Menu(){
 }
 
 void Menu::option1() {
-    FileReader fileReader;
 
     if(matrix != nullptr){ //free memory if previous matrix still exist
         delete matrix;
@@ -45,34 +45,23 @@ void Menu::option4(){
         return;
     }
 
-    TabuSearch tabuSearch = TabuSearch(matrix, stopCriteria);
+    TabuSearch* tabuSearch = new TabuSearch(matrix, stopCriteria);
     timer.startTimer();
-    tabuSearch.launch(timer);
+    tabuSearch->launch(timer);
 
-    solution = tabuSearch.solution;
-    objectiveFunction = tabuSearch.objectiveFunction;
+    solution = tabuSearch->solution;
+    objectiveFunction = tabuSearch->objectiveFunction;
     printSolution();
+    delete tabuSearch;
 }
 
 void Menu::option5(){
     std::cout<<"Give the temperature coefficient change (0,1):"<<std::endl;
     std::cin >> a;
-
-    coolingOption = 0;
-    std::cout << "1. Geometric cooling" <<std::endl;
-    std::cout << "2. Exponential cooling" <<std::endl;
-    std::cout << "3. Logaritmic cooling" <<std::endl;
-
-    while(coolingOption!=1 && coolingOption!=2 && coolingOption!=3) {
-        std::cin >> coolingOption;
-    }
 }
 
+
 void Menu::option6() {
-    if(matrix == nullptr){
-        std::cout<<"No data hasn't been read yet"<<std::endl;
-        return;
-    }
 
     if(stopCriteria == 0){
         std::cout<<"Stop criteria hasn't been set yet"<<std::endl;
@@ -84,13 +73,71 @@ void Menu::option6() {
         return;
     }
 
-    SimulatedAnnealing simulatedAnnealing = SimulatedAnnealing(matrix, a, stopCriteria, coolingOption);
-    timer.startTimer();
-    simulatedAnnealing.launch(timer);
+    int methodT = 3;
+    std::cout << "1. Manual tests" << std::endl;
+    std::cout << "2. Automatic tests" << std::endl;
+    std::cin>>methodT;
 
-    solution = simulatedAnnealing.solution;
-    objectiveFunction = simulatedAnnealing.objectiveFunction;
+    if(methodT == 1){
+        manualTests();
+    }
+
+    else if(methodT == 2){
+        automaticTests();
+    }
+
+}
+
+void Menu::manualTests(){
+    if(matrix == nullptr){
+        std::cout<<"No data hasn't been read yet"<<std::endl;
+        return;
+    }
+
+    SimulatedAnnealing* simulatedAnnealing = new SimulatedAnnealing(matrix, a, stopCriteria);
+    timer.startTimer();
+    simulatedAnnealing->launch(timer);
+
+    solution = simulatedAnnealing->solution;
+    objectiveFunction = simulatedAnnealing->objectiveFunction;
     printSolution();
+
+    std::cout << "Exp(-1/T_k) = "<< exp(-1/simulatedAnnealing->T_k) << std::endl;
+    std::cout << "T_k = "<< simulatedAnnealing->T_k << std::endl;
+
+    delete simulatedAnnealing;
+}
+
+void Menu::automaticTests(){
+
+    FileWriter* fileWriter = new FileWriter();
+
+    for(int i=0; i<10; i++){
+        SimulatedAnnealing* simulatedAnnealing = new SimulatedAnnealing(matrix, a, stopCriteria);
+        timer.startTimer();
+        simulatedAnnealing->launch(timer);
+
+        simulatedAnnealing->printSolution();
+        std::cout << "Exp(-1/T_k) = "<< exp(-1/simulatedAnnealing->T_k) << std::endl;
+        std::cout << "T_k = "<< simulatedAnnealing->T_k << std::endl;
+
+        fileWriter->resultsTime[i] = simulatedAnnealing->whenFound;
+        fileWriter->resultsRoute[i] = simulatedAnnealing->objectiveFunction;
+
+        delete simulatedAnnealing;
+    }
+
+    std::string graph; //f.e. ftv55
+    int i=0;
+    while(fileReader.filename[i]!='.'){
+        graph+=fileReader.filename[i];
+        i++;
+    }
+
+    fileWriter->write("SA", graph);
+
+    delete fileWriter;
+
 }
 
 void Menu::option7() {

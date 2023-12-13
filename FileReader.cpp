@@ -7,7 +7,6 @@
 
 Matrix* FileReader::read(){
 
-    std::string filename;
     std::cout << "Give the name of file" << std::endl;
     std::cin >> filename; //Give the name of file by user
 

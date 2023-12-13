@@ -4,7 +4,7 @@
 
 #include "SimulatedAnnealing.h"
 
-SimulatedAnnealing::SimulatedAnnealing(Matrix *matrix, double a, int stopCriteria, int coolingOption) {
+SimulatedAnnealing::SimulatedAnnealing(Matrix *matrix, double a, int stopCriteria) {
     this->matrix=matrix;
     this->a = a;
     this->stopCriteria = stopCriteria;
@@ -12,9 +12,9 @@ SimulatedAnnealing::SimulatedAnnealing(Matrix *matrix, double a, int stopCriteri
 
 void SimulatedAnnealing::launch(Timer timer) {
 
-    //1. random beginning solution
+    //1. beginning solution generated with greedy algorithm
     generateBegSolutionGreedy();
-    printSolution();
+//    printSolution();
     int x, i;
     int newObjectiveFunction;
     int delta;
@@ -35,7 +35,7 @@ void SimulatedAnnealing::launch(Timer timer) {
             std::swap(solution[i], solution[x]);
             newObjectiveFunction = calculateRoute();
 
-            delta = newObjectiveFunction - objectiveFunction; //4. delta = f(x)-f(y)
+            delta = newObjectiveFunction - objectiveFunction; //4. delta = f(y)-f(x)
 
             if (delta <= 0) { //5. we update objectiveFunction
                 objectiveFunction = newObjectiveFunction;
@@ -52,20 +52,9 @@ void SimulatedAnnealing::launch(Timer timer) {
                 std::swap(solution[i], solution[x]);
             }
 
-            //7. Decrease temperature
-            if(coolingOption == 1) { //geometric
-                T_k = a * T_k;
-            }
-
-            else if(coolingOption == 2){ //exponential
-                T_k = pow(a,k)*T_k;
-            }
-
-            else{ //logarithmic
-                T_k = T_k/(1+log(1+k));
-            }
-
         }
+        //7. Decrease temperature
+        T_k = a * T_k;
     }
 
     std::cout << "STOP! " << stopCriteria << " seconds passed" << std::endl;

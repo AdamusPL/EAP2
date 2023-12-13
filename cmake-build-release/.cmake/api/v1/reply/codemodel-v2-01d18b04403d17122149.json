@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.25"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "Release",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PEA2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PEA2-Debug-46c16cf79076dfb52d0c.json",
+					"jsonFile" : "target-PEA2-Release-2c7d641a0bd728bedb76.json",
 					"name" : "PEA2",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/adamc/CLionProjects/EAP2/cmake-build-debug",
+		"build" : "C:/Users/adamc/CLionProjects/EAP2/cmake-build-release",
 		"source" : "C:/Users/adamc/CLionProjects/EAP2"
 	},
 	"version" : 

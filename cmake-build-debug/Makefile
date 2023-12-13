@@ -152,6 +152,30 @@ FileReader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/FileReader.cpp.s
 .PHONY : FileReader.cpp.s
 
+FileWriter.obj: FileWriter.cpp.obj
+.PHONY : FileWriter.obj
+
+# target to build an object file
+FileWriter.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/FileWriter.cpp.obj
+.PHONY : FileWriter.cpp.obj
+
+FileWriter.i: FileWriter.cpp.i
+.PHONY : FileWriter.i
+
+# target to preprocess a source file
+FileWriter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/FileWriter.cpp.i
+.PHONY : FileWriter.cpp.i
+
+FileWriter.s: FileWriter.cpp.s
+.PHONY : FileWriter.s
+
+# target to generate assembly for a file
+FileWriter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/FileWriter.cpp.s
+.PHONY : FileWriter.cpp.s
+
 Matrix.obj: Matrix.cpp.obj
 .PHONY : Matrix.obj
 
@@ -272,6 +296,30 @@ Timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/Timer.cpp.s
 .PHONY : Timer.cpp.s
 
+XMLFileReader.obj: XMLFileReader.cpp.obj
+.PHONY : XMLFileReader.obj
+
+# target to build an object file
+XMLFileReader.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj
+.PHONY : XMLFileReader.cpp.obj
+
+XMLFileReader.i: XMLFileReader.cpp.i
+.PHONY : XMLFileReader.i
+
+# target to preprocess a source file
+XMLFileReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/XMLFileReader.cpp.i
+.PHONY : XMLFileReader.cpp.i
+
+XMLFileReader.s: XMLFileReader.cpp.s
+.PHONY : XMLFileReader.s
+
+# target to generate assembly for a file
+XMLFileReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/XMLFileReader.cpp.s
+.PHONY : XMLFileReader.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -308,6 +356,9 @@ help:
 	@echo ... FileReader.obj
 	@echo ... FileReader.i
 	@echo ... FileReader.s
+	@echo ... FileWriter.obj
+	@echo ... FileWriter.i
+	@echo ... FileWriter.s
 	@echo ... Matrix.obj
 	@echo ... Matrix.i
 	@echo ... Matrix.s
@@ -323,6 +374,9 @@ help:
 	@echo ... Timer.obj
 	@echo ... Timer.i
 	@echo ... Timer.s
+	@echo ... XMLFileReader.obj
+	@echo ... XMLFileReader.i
+	@echo ... XMLFileReader.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

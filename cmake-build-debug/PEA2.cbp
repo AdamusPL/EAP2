@@ -91,6 +91,12 @@
 		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/FileReader.h">
 			<Option target="PEA2"/>
 		</Unit>
+		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/FileWriter.cpp">
+			<Option target="PEA2"/>
+		</Unit>
+		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/FileWriter.h">
+			<Option target="PEA2"/>
+		</Unit>
 		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/Matrix.cpp">
 			<Option target="PEA2"/>
 		</Unit>
@@ -119,6 +125,12 @@
 			<Option target="PEA2"/>
 		</Unit>
 		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/Timer.h">
+			<Option target="PEA2"/>
+		</Unit>
+		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/XMLFileReader.cpp">
+			<Option target="PEA2"/>
+		</Unit>
+		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/XMLFileReader.h">
 			<Option target="PEA2"/>
 		</Unit>
 		<Unit filename="C:/Users/adamc/CLionProjects/EAP2/main.cpp">
