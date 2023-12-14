@@ -121,9 +121,12 @@ void Menu::automaticTests(){
         simulatedAnnealing->printSolution();
         std::cout << "Exp(-1/T_k) = "<< exp(-1/simulatedAnnealing->T_k) << std::endl;
         std::cout << "T_k = "<< simulatedAnnealing->T_k << std::endl;
+        std::cout << "Solution found in: " << simulatedAnnealing->whenFound << std::endl;
 
         fileWriter->resultsTime[i] = simulatedAnnealing->whenFound;
         fileWriter->resultsRoute[i] = simulatedAnnealing->bestObjectiveFunction;
+        fileWriter->resultsTemperature[i] = simulatedAnnealing->T_k;
+        fileWriter->resultsE[i] = exp(-1/simulatedAnnealing->T_k);
 
         delete simulatedAnnealing;
     }
@@ -184,24 +187,36 @@ void Menu::option8() {
     std::fstream file;
     file.open(filename, std::ios::in);
 
-    //read data from file
-    int numberOfNodes;
-    int data;
-    file >> numberOfNodes;
+    if (file.is_open()) {
+        //read data from file
+        int numberOfNodes;
+        int data;
+        file >> numberOfNodes;
 
-    for(int i=0; i < numberOfNodes - 1; i++){
-        file >> data;
-        solution.push_back(data);
+        for (int i = 0; i < numberOfNodes; i++) {
+            if (file.fail()) {
+                std::cout << "Error while reading file" << std::endl; //"exception"
+                break;
+            }
+            file >> data;
+            solution.push_back(data);
+        }
+
+        file.close();
+
+        //calculate route
+        for (int i = 1; i < matrix->nrV; i++) {
+            objectiveFunction += matrix->adjMatrix[solution[i - 1]][solution[i]];
+        }
+
+        objectiveFunction += matrix->adjMatrix[solution[solution.size() - 1]][solution[0]];
+
+        Menu::printSolution();
     }
 
-    file.close();
-
-    //calculate route
-    for(int i=1; i < matrix->nrV; i++){
-        objectiveFunction += matrix->adjMatrix[solution[i-1]][solution[i]];
+    else{
+        std::cout << "Error while opening file" << std::endl; //"exception"
     }
-
-    Menu::printSolution();
 
 }
 

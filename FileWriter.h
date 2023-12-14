@@ -11,6 +11,8 @@ public:
     FileWriter();
     ~FileWriter();
     double *resultsTime;
+    double *resultsE;
+    double *resultsTemperature;
     int *resultsRoute;
     void write(std::string, std::string);
 };
