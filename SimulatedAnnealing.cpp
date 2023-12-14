@@ -52,6 +52,7 @@ void SimulatedAnnealing::launch(Timer timer) {
                     bestSolution = newSolution;
                     bestObjectiveFunction = newObjectiveFunction;
                     whenFound = timer.stopTimer() / 1000000.0;
+                    save.emplace_back(whenFound, bestObjectiveFunction);
                 }
             }
 

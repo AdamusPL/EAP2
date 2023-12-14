@@ -106,6 +106,16 @@ void Menu::manualTests(){
     std::cout << "T_k = "<< simulatedAnnealing->T_k << std::endl;
     std::cout << "Solution found in: " << simulatedAnnealing->whenFound << std::endl;
 
+    std::string name;
+    std::cout << "Give name of file" << std::endl;
+    std::cin >> name;
+
+    std::ofstream file(name);
+
+    for(auto entry: simulatedAnnealing->save){
+        file << entry.first << " " << entry.second << std::endl;
+    }
+
     delete simulatedAnnealing;
 }
 
@@ -127,6 +137,18 @@ void Menu::automaticTests(){
         fileWriter->resultsRoute[i] = simulatedAnnealing->bestObjectiveFunction;
         fileWriter->resultsTemperature[i] = simulatedAnnealing->T_k;
         fileWriter->resultsE[i] = exp(-1/simulatedAnnealing->T_k);
+
+        std::string name;
+        std::cout << "Give name of file" << std::endl;
+        std::cin >> name;
+
+        std::ofstream file(name);
+
+        for(auto entry: simulatedAnnealing->save){
+            file << entry.first << " " << entry.second << std::endl;
+        }
+
+        file.close();
 
         delete simulatedAnnealing;
     }

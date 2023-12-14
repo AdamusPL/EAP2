@@ -10,6 +10,7 @@
 #include "Timer.h"
 #include "Matrix.h"
 #include <cmath>
+#include <list>
 
 class SimulatedAnnealing {
 public:
@@ -22,6 +23,8 @@ public:
     int bestObjectiveFunction;
     int newObjectiveFunction;
     int currentObjectiveFunction;
+
+    std::list<std::pair<double,int>> save;
 
     int stopCriteria;
     double whenFound;
