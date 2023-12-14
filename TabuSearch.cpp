@@ -15,7 +15,7 @@ TabuSearch::TabuSearch(Matrix* matrix, int stopCriteria){
 
 void TabuSearch::launch(Timer timer){
 
-    //1. Choose beginning solution x_0
+    //1. Choose beginning bestSolution x_0
     generateBegSolutionGreedy();
 
     //2. Neighbourhood
@@ -44,20 +44,20 @@ void TabuSearch::launch(Timer timer){
                 priorityQueue.emplace(newObjectiveFunction,std::make_pair(i, x));
             }
 
-            std::swap(solution[i], solution[x]); //come back to previous solution
+            std::swap(solution[i], solution[x]); //come back to previous bestSolution
 
         }
 
         if(!priorityQueue.empty()) {
             bestSolution = priorityQueue.top();
 
-            //update solution and objective function with new best solution
+            //update bestSolution and objective function with new best bestSolution
             std::swap(solution[bestSolution.second.first], solution[bestSolution.second.second]);
             objectiveFunction = bestSolution.first;
 //            numberOfSwaps++;
 
 //            printSolution();
-//            std::cout<<"Swap: "<<solution[bestSolution.second.first]<<" z "<<solution[bestSolution.second.second] <<std::endl;
+//            std::cout<<"Swap: "<<bestSolution[bestSolution.second.first]<<" z "<<bestSolution[bestSolution.second.second] <<std::endl;
 //            std::cout<<"Wykonano swapow: "<<numberOfSwaps<<std::endl;
 
             while(!priorityQueue.empty()){
@@ -85,7 +85,7 @@ int TabuSearch::calculateRoute(){
 }
 
 //has to be greedy
-//method to generate beginning solution
+//method to generate beginning bestSolution
 void TabuSearch::generateBegSolutionRandom(){
 
     std::vector<bool> visited; //vector helping to generate permutation
@@ -100,7 +100,7 @@ void TabuSearch::generateBegSolutionRandom(){
     for (int i = 0; i < matrix->nrV; ++i) {
         x = rand()%(matrix->nrV); //get random number
 
-        while(visited[x]){ //if it exists in solution, generate once again
+        while(visited[x]){ //if it exists in bestSolution, generate once again
             x = rand()%(matrix->nrV);
         }
 

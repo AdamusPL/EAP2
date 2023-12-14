@@ -17,8 +17,8 @@ int main() {
         std::cout << "4. Launch Tabu Search" << std::endl;
         std::cout << "5. Set temperature coefficient for Simulated Annealing" << std::endl;
         std::cout << "6. Launch Simulated Annealing" << std::endl;
-        std::cout << "7. Save solution to .txt file" << std::endl;
-        std::cout << "8. Read solution path from .txt file and calculate the route" << std::endl;
+        std::cout << "7. Save bestSolution to .txt file" << std::endl;
+        std::cout << "8. Read bestSolution path from .txt file and calculate the route" << std::endl;
 
         std::cin >> option;
         std::cout << std::endl;

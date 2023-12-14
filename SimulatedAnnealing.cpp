@@ -8,52 +8,62 @@ SimulatedAnnealing::SimulatedAnnealing(Matrix *matrix, double a, int stopCriteri
     this->matrix=matrix;
     this->a = a;
     this->stopCriteria = stopCriteria;
+    this->bestObjectiveFunction = this->currentObjectiveFunction = 0;
 }
 
 void SimulatedAnnealing::launch(Timer timer) {
 
     //1. beginning solution generated with greedy algorithm
-    generateBegSolutionGreedy();
+    generateBegSolutionGreedy(bestSolution, bestObjectiveFunction);
+    generateBegSolutionGreedy(currentSolution, currentObjectiveFunction);
 //    printSolution();
-    int x, i;
-    int newObjectiveFunction;
+    int node2, node1;
     int delta;
 
+    //beginning temperature - difference between maximum edge and minimum edge in graph
     T_k = findMax() - findMin();
 
     while(timer.stopTimer() / 1000000.0 < stopCriteria){ //1. while stop criteria
 
         for(int k=0; k<matrix->nrV*matrix->nrV/2; k++){ //2. reached number of eras, L=n^2/2
-            //3. new y state in neighbourhood x
-            i = rand() % (matrix->nrV);
-            x = rand() % (matrix->nrV); //get random number
 
-            while (x == i) { //we should get different number of node than in which we are now
-                x = rand() % (matrix->nrV);
+            //3. new y state in neighbourhood node2
+            node1 = rand() % (matrix->nrV);
+            node2 = rand() % (matrix->nrV); //get two random index of Nodes
+
+            while (node2 == node1) { //we have to get two different indexes
+                node2 = rand() % (matrix->nrV);
             }
 
-            std::swap(solution[i], solution[x]);
-            newObjectiveFunction = calculateRoute();
+            newSolution = currentSolution; //copy solution
+            std::swap(newSolution[node1], newSolution[node2]); //swap two Nodes from random positions
+            newObjectiveFunction = calculateRoute(); //calculate objectiveFunction
 
-            delta = newObjectiveFunction - objectiveFunction; //4. delta = f(y)-f(x)
+            //update best solution
+            delta = newObjectiveFunction - currentObjectiveFunction;
 
-            if (delta <= 0) { //5. we update objectiveFunction
-                objectiveFunction = newObjectiveFunction;
-//                printSolution();
+            if(delta <= 0){ //4. delta = f(y)-f(x)
+                currentSolution = newSolution;
+                currentObjectiveFunction = newObjectiveFunction;
+
+                delta = newObjectiveFunction - bestObjectiveFunction;
+
+                if(delta <= 0){
+                    bestSolution = newSolution;
+                    bestObjectiveFunction = newObjectiveFunction;
+                    whenFound = timer.stopTimer() / 1000000.0;
+                }
             }
 
-            //6. probability of tolerance of accepting worse solution
+            //5. probability of tolerance of accepting worse solution
             else if(exp(-delta/T_k) >= static_cast<double>(rand()%100+1) / 100.0){ //if e^(-delta/T) >= random[0,1]
-                objectiveFunction = newObjectiveFunction;
+                currentSolution = newSolution;
+                currentObjectiveFunction = newObjectiveFunction;
 //                printSolution();
-            }
-
-            else{ //we come back to previous solution
-                std::swap(solution[i], solution[x]);
             }
 
         }
-        //7. Decrease temperature
+        //6. Decrease temperature
         T_k = a * T_k;
     }
 
@@ -85,52 +95,20 @@ int SimulatedAnnealing::findMax(){
     return max;
 }
 
-void SimulatedAnnealing::generateBegSolutionRandom(){
-
-    std::vector<bool> visited; //vector helping to generate permutation
-
-    for (int i = 0; i < matrix->nrV; ++i) { //filling the vector
-        visited.push_back(false);
-    }
-
-    srand(time(NULL)); //initialize the seed
-    int x;
-
-    for (int i = 0; i < matrix->nrV; ++i) {
-        x = rand()%(matrix->nrV); //get random number
-
-        while(visited[x]){ //if it exists in solution, generate once again
-            x = rand()%(matrix->nrV);
-        }
-
-        solution.push_back(x);
-        visited[x] = true; //we visit every node once
-
-        if(i>0){
-            objectiveFunction+=matrix->adjMatrix[solution[i-1]][solution[i]]; //calculate objective function
-        }
-
-    }
-
-    objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
-
-//    printSolution();
-
-}
 
 int SimulatedAnnealing::calculateRoute(){
     int objectiveFunction = 0;
 
-    for (int i = 1; i < solution.size(); ++i) {
-        objectiveFunction+=matrix->adjMatrix[solution[i-1]][solution[i]];
+    for (int i = 1; i < newSolution.size(); ++i) {
+        objectiveFunction+=matrix->adjMatrix[newSolution[i - 1]][newSolution[i]];
     }
 
-    objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]];
+    objectiveFunction+=matrix->adjMatrix[newSolution[newSolution.size() - 1]][newSolution[0]];
 
     return objectiveFunction;
 }
 
-void SimulatedAnnealing::generateBegSolutionGreedy(){
+void SimulatedAnnealing::generateBegSolutionGreedy(std::vector<int> &solution, int &objectiveFunction){
 
     std::vector<bool> visited; //vector helping to generate permutation
 
@@ -151,8 +129,8 @@ void SimulatedAnnealing::generateBegSolutionGreedy(){
 
         for (int j = 1; j < matrix->nrV; ++j) {
 
-            if(matrix->adjMatrix[solution[i-1]][j] < min && !visited[j]){
-                min = matrix->adjMatrix[solution[i-1]][j];
+            if(matrix->adjMatrix[solution[i - 1]][j] < min && !visited[j]){
+                min = matrix->adjMatrix[solution[i - 1]][j];
                 node = j;
             }
 
@@ -163,59 +141,20 @@ void SimulatedAnnealing::generateBegSolutionGreedy(){
         objectiveFunction += min;
     }
 
-    objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
+    objectiveFunction+=matrix->adjMatrix[solution[solution.size() - 1]][solution[0]]; //we come back to the beginning node
 
 //    printSolution();
 
 }
 
-int SimulatedAnnealing::generateSolutionGreedyTheWorst() {
-    int objectiveFunction;
-    std::vector<int> solution;
-
-    std::vector<bool> visited; //vector helping to generate permutation
-
-    for (int i = 0; i < matrix->nrV; ++i) { //filling the vector
-        visited.push_back(false);
-    }
-
-    solution.push_back(0);
-    visited[0] = true;
-
-    int max;
-    int node;
-
-    for (int i = 1; i < matrix->nrV; ++i) {
-
-        max = 0;
-
-        for (int j = 1; j < matrix->nrV; ++j) {
-
-            if(matrix->adjMatrix[solution[i-1]][j] > max && !visited[j]){
-                max = matrix->adjMatrix[solution[i - 1]][j];
-                node = j;
-            }
-
-        }
-
-        solution.push_back(node);
-        visited[node] = true;
-        objectiveFunction += max;
-    }
-
-    objectiveFunction+=matrix->adjMatrix[solution[solution.size()-1]][solution[0]]; //we come back to the beginning node
-    return objectiveFunction;
-
-//    printSolution();
-}
 
 void SimulatedAnnealing::printSolution(){
-    for (int i = 0; i < solution.size(); ++i) {
-        std::cout << solution[i] << "->";
+    for (int i = 0; i < bestSolution.size(); ++i) {
+        std::cout << bestSolution[i] << "->";
     }
 
-    std::cout << solution[0];
+    std::cout << bestSolution[0];
     std::cout<<std::endl;
-    std::cout<<objectiveFunction<<std::endl;
+    std::cout << bestObjectiveFunction << std::endl;
 
 }

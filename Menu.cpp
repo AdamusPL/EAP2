@@ -98,12 +98,13 @@ void Menu::manualTests(){
     timer.startTimer();
     simulatedAnnealing->launch(timer);
 
-    solution = simulatedAnnealing->solution;
-    objectiveFunction = simulatedAnnealing->objectiveFunction;
+    solution = simulatedAnnealing->bestSolution;
+    objectiveFunction = simulatedAnnealing->bestObjectiveFunction;
     printSolution();
 
     std::cout << "Exp(-1/T_k) = "<< exp(-1/simulatedAnnealing->T_k) << std::endl;
     std::cout << "T_k = "<< simulatedAnnealing->T_k << std::endl;
+    std::cout << "Solution found in: " << simulatedAnnealing->whenFound << std::endl;
 
     delete simulatedAnnealing;
 }
@@ -122,7 +123,7 @@ void Menu::automaticTests(){
         std::cout << "T_k = "<< simulatedAnnealing->T_k << std::endl;
 
         fileWriter->resultsTime[i] = simulatedAnnealing->whenFound;
-        fileWriter->resultsRoute[i] = simulatedAnnealing->objectiveFunction;
+        fileWriter->resultsRoute[i] = simulatedAnnealing->bestObjectiveFunction;
 
         delete simulatedAnnealing;
     }
@@ -157,7 +158,7 @@ void Menu::option7() {
     file << matrix->nrV << std::endl; //number of nodes
 
     for(int i=0; i<solution.size(); i++){
-        file << solution[i] << std::endl; //path
+        file << solution[i] << " "; //path
     }
 
     file << solution[0] << std::endl; //cycle
@@ -166,6 +167,10 @@ void Menu::option7() {
 }
 
 void Menu::option8() {
+    if(!solution.empty()){
+        solution.clear();
+        objectiveFunction = 0;
+    }
 
     if(matrix == nullptr){
         std::cout<<"Matrix hasn't been read yet"<<std::endl;
@@ -195,8 +200,6 @@ void Menu::option8() {
     for(int i=1; i < matrix->nrV; i++){
         objectiveFunction += matrix->adjMatrix[solution[i-1]][solution[i]];
     }
-
-    objectiveFunction += matrix->adjMatrix[solution[solution.size()-1]][solution[0]];
 
     Menu::printSolution();
 
