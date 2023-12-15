@@ -248,30 +248,6 @@ SimulatedAnnealing.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.s
 .PHONY : SimulatedAnnealing.cpp.s
 
-TabuSearch.obj: TabuSearch.cpp.obj
-.PHONY : TabuSearch.obj
-
-# target to build an object file
-TabuSearch.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/TabuSearch.cpp.obj
-.PHONY : TabuSearch.cpp.obj
-
-TabuSearch.i: TabuSearch.cpp.i
-.PHONY : TabuSearch.i
-
-# target to preprocess a source file
-TabuSearch.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/TabuSearch.cpp.i
-.PHONY : TabuSearch.cpp.i
-
-TabuSearch.s: TabuSearch.cpp.s
-.PHONY : TabuSearch.s
-
-# target to generate assembly for a file
-TabuSearch.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/TabuSearch.cpp.s
-.PHONY : TabuSearch.cpp.s
-
 Timer.obj: Timer.cpp.obj
 .PHONY : Timer.obj
 
@@ -295,30 +271,6 @@ Timer.s: Timer.cpp.s
 Timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/Timer.cpp.s
 .PHONY : Timer.cpp.s
-
-XMLFileReader.obj: XMLFileReader.cpp.obj
-.PHONY : XMLFileReader.obj
-
-# target to build an object file
-XMLFileReader.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj
-.PHONY : XMLFileReader.cpp.obj
-
-XMLFileReader.i: XMLFileReader.cpp.i
-.PHONY : XMLFileReader.i
-
-# target to preprocess a source file
-XMLFileReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/XMLFileReader.cpp.i
-.PHONY : XMLFileReader.cpp.i
-
-XMLFileReader.s: XMLFileReader.cpp.s
-.PHONY : XMLFileReader.s
-
-# target to generate assembly for a file
-XMLFileReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\PEA2.dir\build.make CMakeFiles/PEA2.dir/XMLFileReader.cpp.s
-.PHONY : XMLFileReader.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -368,15 +320,9 @@ help:
 	@echo ... SimulatedAnnealing.obj
 	@echo ... SimulatedAnnealing.i
 	@echo ... SimulatedAnnealing.s
-	@echo ... TabuSearch.obj
-	@echo ... TabuSearch.i
-	@echo ... TabuSearch.s
 	@echo ... Timer.obj
 	@echo ... Timer.i
 	@echo ... Timer.s
-	@echo ... XMLFileReader.obj
-	@echo ... XMLFileReader.i
-	@echo ... XMLFileReader.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

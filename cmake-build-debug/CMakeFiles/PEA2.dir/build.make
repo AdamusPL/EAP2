@@ -138,24 +138,10 @@ CMakeFiles/PEA2.dir/Timer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA2.dir/Timer.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adamc\CLionProjects\EAP2\Timer.cpp -o CMakeFiles\PEA2.dir\Timer.cpp.s
 
-CMakeFiles/PEA2.dir/TabuSearch.cpp.obj: CMakeFiles/PEA2.dir/flags.make
-CMakeFiles/PEA2.dir/TabuSearch.cpp.obj: C:/Users/adamc/CLionProjects/EAP2/TabuSearch.cpp
-CMakeFiles/PEA2.dir/TabuSearch.cpp.obj: CMakeFiles/PEA2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PEA2.dir/TabuSearch.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PEA2.dir/TabuSearch.cpp.obj -MF CMakeFiles\PEA2.dir\TabuSearch.cpp.obj.d -o CMakeFiles\PEA2.dir\TabuSearch.cpp.obj -c C:\Users\adamc\CLionProjects\EAP2\TabuSearch.cpp
-
-CMakeFiles/PEA2.dir/TabuSearch.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PEA2.dir/TabuSearch.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adamc\CLionProjects\EAP2\TabuSearch.cpp > CMakeFiles\PEA2.dir\TabuSearch.cpp.i
-
-CMakeFiles/PEA2.dir/TabuSearch.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA2.dir/TabuSearch.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adamc\CLionProjects\EAP2\TabuSearch.cpp -o CMakeFiles\PEA2.dir\TabuSearch.cpp.s
-
 CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj: CMakeFiles/PEA2.dir/flags.make
 CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj: C:/Users/adamc/CLionProjects/EAP2/SimulatedAnnealing.cpp
 CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj: CMakeFiles/PEA2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj -MF CMakeFiles\PEA2.dir\SimulatedAnnealing.cpp.obj.d -o CMakeFiles\PEA2.dir\SimulatedAnnealing.cpp.obj -c C:\Users\adamc\CLionProjects\EAP2\SimulatedAnnealing.cpp
 
 CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.i: cmake_force
@@ -166,24 +152,10 @@ CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.s"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adamc\CLionProjects\EAP2\SimulatedAnnealing.cpp -o CMakeFiles\PEA2.dir\SimulatedAnnealing.cpp.s
 
-CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj: CMakeFiles/PEA2.dir/flags.make
-CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj: C:/Users/adamc/CLionProjects/EAP2/XMLFileReader.cpp
-CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj: CMakeFiles/PEA2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj -MF CMakeFiles\PEA2.dir\XMLFileReader.cpp.obj.d -o CMakeFiles\PEA2.dir\XMLFileReader.cpp.obj -c C:\Users\adamc\CLionProjects\EAP2\XMLFileReader.cpp
-
-CMakeFiles/PEA2.dir/XMLFileReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PEA2.dir/XMLFileReader.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adamc\CLionProjects\EAP2\XMLFileReader.cpp > CMakeFiles\PEA2.dir\XMLFileReader.cpp.i
-
-CMakeFiles/PEA2.dir/XMLFileReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PEA2.dir/XMLFileReader.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adamc\CLionProjects\EAP2\XMLFileReader.cpp -o CMakeFiles\PEA2.dir\XMLFileReader.cpp.s
-
 CMakeFiles/PEA2.dir/FileWriter.cpp.obj: CMakeFiles/PEA2.dir/flags.make
 CMakeFiles/PEA2.dir/FileWriter.cpp.obj: C:/Users/adamc/CLionProjects/EAP2/FileWriter.cpp
 CMakeFiles/PEA2.dir/FileWriter.cpp.obj: CMakeFiles/PEA2.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/PEA2.dir/FileWriter.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PEA2.dir/FileWriter.cpp.obj"
 	C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PEA2.dir/FileWriter.cpp.obj -MF CMakeFiles\PEA2.dir\FileWriter.cpp.obj.d -o CMakeFiles\PEA2.dir\FileWriter.cpp.obj -c C:\Users\adamc\CLionProjects\EAP2\FileWriter.cpp
 
 CMakeFiles/PEA2.dir/FileWriter.cpp.i: cmake_force
@@ -201,9 +173,7 @@ PEA2_OBJECTS = \
 "CMakeFiles/PEA2.dir/FileReader.cpp.obj" \
 "CMakeFiles/PEA2.dir/Matrix.cpp.obj" \
 "CMakeFiles/PEA2.dir/Timer.cpp.obj" \
-"CMakeFiles/PEA2.dir/TabuSearch.cpp.obj" \
 "CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj" \
-"CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj" \
 "CMakeFiles/PEA2.dir/FileWriter.cpp.obj"
 
 # External object files for target PEA2
@@ -214,15 +184,13 @@ PEA2.exe: CMakeFiles/PEA2.dir/Menu.cpp.obj
 PEA2.exe: CMakeFiles/PEA2.dir/FileReader.cpp.obj
 PEA2.exe: CMakeFiles/PEA2.dir/Matrix.cpp.obj
 PEA2.exe: CMakeFiles/PEA2.dir/Timer.cpp.obj
-PEA2.exe: CMakeFiles/PEA2.dir/TabuSearch.cpp.obj
 PEA2.exe: CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj
-PEA2.exe: CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj
 PEA2.exe: CMakeFiles/PEA2.dir/FileWriter.cpp.obj
 PEA2.exe: CMakeFiles/PEA2.dir/build.make
 PEA2.exe: CMakeFiles/PEA2.dir/linkLibs.rsp
 PEA2.exe: CMakeFiles/PEA2.dir/objects1
 PEA2.exe: CMakeFiles/PEA2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable PEA2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\adamc\CLionProjects\EAP2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable PEA2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\PEA2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

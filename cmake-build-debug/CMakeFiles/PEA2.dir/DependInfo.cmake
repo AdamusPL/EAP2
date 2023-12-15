@@ -13,9 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/adamc/CLionProjects/EAP2/Matrix.cpp" "CMakeFiles/PEA2.dir/Matrix.cpp.obj" "gcc" "CMakeFiles/PEA2.dir/Matrix.cpp.obj.d"
   "C:/Users/adamc/CLionProjects/EAP2/Menu.cpp" "CMakeFiles/PEA2.dir/Menu.cpp.obj" "gcc" "CMakeFiles/PEA2.dir/Menu.cpp.obj.d"
   "C:/Users/adamc/CLionProjects/EAP2/SimulatedAnnealing.cpp" "CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj" "gcc" "CMakeFiles/PEA2.dir/SimulatedAnnealing.cpp.obj.d"
-  "C:/Users/adamc/CLionProjects/EAP2/TabuSearch.cpp" "CMakeFiles/PEA2.dir/TabuSearch.cpp.obj" "gcc" "CMakeFiles/PEA2.dir/TabuSearch.cpp.obj.d"
   "C:/Users/adamc/CLionProjects/EAP2/Timer.cpp" "CMakeFiles/PEA2.dir/Timer.cpp.obj" "gcc" "CMakeFiles/PEA2.dir/Timer.cpp.obj.d"
-  "C:/Users/adamc/CLionProjects/EAP2/XMLFileReader.cpp" "CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj" "gcc" "CMakeFiles/PEA2.dir/XMLFileReader.cpp.obj.d"
   "C:/Users/adamc/CLionProjects/EAP2/main.cpp" "CMakeFiles/PEA2.dir/main.cpp.obj" "gcc" "CMakeFiles/PEA2.dir/main.cpp.obj.d"
   )
 

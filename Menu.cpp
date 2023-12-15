@@ -4,7 +4,7 @@
 
 #include "Menu.h"
 #include "FileReader.h"
-#include "TabuSearch.h"
+//#include "TabuSearch.h"
 #include "SimulatedAnnealing.h"
 #include "FileWriter.h"
 
@@ -35,24 +35,24 @@ void Menu::option3() {
 
 void Menu::option4(){
 
-    if(matrix == nullptr){
-        std::cout<<"No data hasn't been read yet"<<std::endl;
-        return;
-    }
-
-    if(stopCriteria == 0){
-        std::cout<<"Stop criteria hasn't been set yet"<<std::endl;
-        return;
-    }
-
-    TabuSearch* tabuSearch = new TabuSearch(matrix, stopCriteria);
-    timer.startTimer();
-    tabuSearch->launch(timer);
-
-    solution = tabuSearch->solution;
-    objectiveFunction = tabuSearch->objectiveFunction;
-    printSolution();
-    delete tabuSearch;
+//    if(matrix == nullptr){
+//        std::cout<<"No data hasn't been read yet"<<std::endl;
+//        return;
+//    }
+//
+//    if(stopCriteria == 0){
+//        std::cout<<"Stop criteria hasn't been set yet"<<std::endl;
+//        return;
+//    }
+//
+//    TabuSearch* tabuSearch = new TabuSearch(matrix, stopCriteria);
+//    timer.startTimer();
+//    tabuSearch->launch(timer);
+//
+//    solution = tabuSearch->solution;
+//    objectiveFunction = tabuSearch->objectiveFunction;
+//    printSolution();
+//    delete tabuSearch;
 }
 
 void Menu::option5(){
@@ -106,16 +106,6 @@ void Menu::manualTests(){
     std::cout << "T_k = "<< simulatedAnnealing->T_k << std::endl;
     std::cout << "Solution found in: " << simulatedAnnealing->whenFound << std::endl;
 
-    std::string name;
-    std::cout << "Give name of file" << std::endl;
-    std::cin >> name;
-
-    std::ofstream file(name);
-
-    for(auto entry: simulatedAnnealing->save){
-        file << entry.first << " " << entry.second << std::endl;
-    }
-
     delete simulatedAnnealing;
 }
 
@@ -149,6 +139,8 @@ void Menu::automaticTests(){
         }
 
         file.close();
+
+        option7();
 
         delete simulatedAnnealing;
     }
@@ -230,8 +222,6 @@ void Menu::option8() {
         for (int i = 1; i < matrix->nrV; i++) {
             objectiveFunction += matrix->adjMatrix[solution[i - 1]][solution[i]];
         }
-
-        objectiveFunction += matrix->adjMatrix[solution[solution.size() - 1]][solution[0]];
 
         Menu::printSolution();
     }
